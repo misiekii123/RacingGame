@@ -1515,7 +1515,11 @@ MonoBehaviour:
   cameraTarget: {fileID: 4782028553381092913}
   nitroFuel: 3
   nitroPower: 1000000
+  nitroCounter: {fileID: 0}
   currentGear: 1
+  segment1: {fileID: 0}
+  segment2: {fileID: 0}
+  segment3: {fileID: 0}
 --- !u!114 &4782028554908382026
 MonoBehaviour:
   m_ObjectHideFlags: 0

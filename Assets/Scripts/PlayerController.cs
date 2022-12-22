@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         drivingScript.ActivateReverseLights();
         drivingScript.ActivateBrakeLights(brake);
         drivingScript.Nitro(nitro);
+        drivingScript.NitroBar();
         drivingScript.Drive(acceleration, brake, steerAngle);
         drivingScript.EngineSound();
     }

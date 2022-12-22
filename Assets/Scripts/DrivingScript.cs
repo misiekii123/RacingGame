@@ -25,10 +25,19 @@ public class DrivingScript : MonoBehaviour
     public int currentGear = 1;
     const float GEAR_FACTOR = 0.05f;
 
+    [Header("Nitro Bar")]
+    public GameObject segment1;
+    public GameObject segment2;
+    public GameObject segment3;
+
     private void Start()
     {
         nitroCounter = GameObject.FindGameObjectWithTag("Fuel").GetComponent<Text>();
         nitroCounter.text = nitroFuel.ToString();
+
+        segment1 = GameObject.FindGameObjectWithTag("Seg1");
+        segment2 = GameObject.FindGameObjectWithTag("Seg2");
+        segment3 = GameObject.FindGameObjectWithTag("Seg3");
     }
 
     public void Drive(float acceleration, float brake, float steerAngle)
@@ -103,7 +112,7 @@ public class DrivingScript : MonoBehaviour
 
     public void ChangeFuelText()
     {
-        nitroCounter.text = nitroFuel.ToString();
+        nitroCounter.text = "Nitro: " + nitroFuel.ToString();
     }
 
     public void Nitro(bool isOn)
@@ -113,6 +122,37 @@ public class DrivingScript : MonoBehaviour
             Boost(nitroPower);
             nitroFuel -= 1;
             ChangeFuelText();
+        }
+    }
+
+    public void NitroBar()
+    {
+        if (nitroFuel >= 3)
+        {
+            segment1.SetActive(true);
+            segment2.SetActive(true);
+            segment3.SetActive(true);
+        }
+
+        else if (nitroFuel == 2)
+        {
+            segment1.SetActive(true);
+            segment2.SetActive(true);
+            segment3.SetActive(false);
+        }
+
+        else if (nitroFuel == 1)
+        {
+            segment1.SetActive(true);
+            segment2.SetActive(false);
+            segment3.SetActive(false);
+        }
+
+        else if (nitroFuel == 0)
+        {
+            segment1.SetActive(false);
+            segment2.SetActive(false);
+            segment3.SetActive(false);
         }
     }
 }
